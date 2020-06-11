@@ -2,7 +2,8 @@
 export const colors = {
     primary: ' #336699',
     secondary: ' #009999',
-    text: '#FFFFF0',
+    lightText: '#FFFFF0',
+    darkText: '#808080',
     error: '#CC3333',
     success: '#41924B',
     buttonColor: '#99CC99',

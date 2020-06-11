@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, NavLink} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 // Importing from Material-UI
 import { makeStyles } from '@material-ui/core/styles';
@@ -20,16 +20,17 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    color: colors.primary
   },
   title: {
     flexGrow: 1,
   },
   header:{
-      backgroundColor: colors.primary
+      backgroundColor: colors.background
   },
   link:{
     textDecoration: 'none',
-    color: colors.text
+    color: colors.primary
   }
 }));
 
@@ -41,20 +42,20 @@ const Header = () => {
       <AppBar position="static" className={classes.header}>
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
+            <MenuIcon  />
           </IconButton>
           
           <Typography variant="h6" className={classes.title}>
-            <NavLink exact to="/" className={classes.link} activeStyle={{ color: colors.highlight}}>
+            <NavLink exact to="/" className={classes.link} activeStyle={{ color: colors.secondary}}>
               Blockchain-Visualization
             </NavLink>
           </Typography>
           
-          <NavLink to="/settings" className={classes.link} activeStyle={{ color: colors.highlight}}>
-            <Button color="inherit" >Settings</Button>
+          <NavLink to="/settings" className={classes.link} activeStyle={{ color: colors.secondary}}>
+            <Button  size="small" variant="outlined" color="inherit"  >Settings</Button>
           </NavLink>
-          <NavLink to="/createtxns" className={classes.link} activeStyle={{ color: colors.highlight}}>
-            <Button color="inherit">Create Transactions</Button>
+          <NavLink to="/createtxns" className={classes.link} activeStyle={{ color: colors.secondary}}>
+            <Button size="small" variant="outlined" color="inherit" style={{marginLeft: 5}}>Create Transactions</Button>
           </NavLink>
         </Toolbar>
       </AppBar>
