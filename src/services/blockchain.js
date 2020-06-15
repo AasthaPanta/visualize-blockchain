@@ -73,7 +73,7 @@ class Block{
      * @param {string} previousHash - includes the hash of the block before
      */
     constructor(timestamp, transactions, previousHash=''){
-        
+        console.log('Inside the constructor of Block');
         this.timestamp = timestamp;
         this.transactions = transactions;
         this.previousHash = previousHash;
@@ -131,7 +131,7 @@ class Blockchain{
      * @returns {Block}
      */
     createGenesisBlock(){
-        return new Block("09/06/2020", "Genesis Block", "0");
+        return new Block(Date.now(), "Genesis Block", "0");
     }
 
     /**
@@ -152,6 +152,7 @@ class Blockchain{
      * @param {string} miningRewardAddress 
      */
     minePendingTransactions(miningRewardAddress){
+        console.log('Mining pending transaction', miningRewardAddress);
         const rewardTx = new Transaction(null, miningRewardAddress, this.miningReward);
         this.pendingTransactions.push(rewardTx);
 
@@ -172,6 +173,7 @@ class Blockchain{
      * @param {Transaction} transaction 
      */
     addTransaction(transaction){
+        console.log('Adding new transaction');
         if(!transaction.fromAddress || !transaction.toAddress){
             throw new Error('Transaction must include from and to address');
         }
