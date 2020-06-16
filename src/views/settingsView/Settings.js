@@ -2,17 +2,21 @@ import React,{Fragment} from 'react';
 import Header from '../../components/Header';
 
 import BlockchainService from '../../services/blockchainService';
-
+import { colors } from '../../assets/styles/ColorPalette';
 
 // Importing from Material-UI
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
-
-
+import Button from '@material-ui/core/Button';
 
 const Settings = () => {
 
-    const blockchain = new BlockchainService().blockchainInstance
+    const blockchain = new BlockchainService().blockchainInstance;
+
+    // saving settings value
+    const saveSettings = () => {
+        console.log('Saving settings value');
+    }
     
     return(
         <Fragment>
@@ -53,6 +57,11 @@ const Settings = () => {
                         }}
                         variant="outlined"
                     />
+                </div>
+                <div style={{marginTop: 20, marginBottom: 20}}>
+                    <Button variant="contained" style={{backgroundColor: colors.buttonColor, color: colors.lightText}} onClick={saveSettings}>
+                        Save
+                    </Button>
                 </div>
             </Container> 
         </Fragment>

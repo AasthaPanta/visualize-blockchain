@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Badge from '@material-ui/core/Badge';
 
 // Importing styles
 import { colors } from '../../assets/styles/ColorPalette';
@@ -55,7 +56,16 @@ const Header = () => {
             <Button  size="small" variant="outlined" color="inherit"  >Settings</Button>
           </NavLink>
           <NavLink to="/createtxns" className={classes.link} activeStyle={{ color: colors.secondary}}>
-            <Button size="small" variant="outlined" color="inherit" style={{marginLeft: 5}}>Create Transactions</Button>
+            <Badge 
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              badgeContent={2} 
+              color="secondary"
+            >
+              <Button size="small" variant="outlined" color="inherit" style={{marginLeft: 5}}>Create Transactions</Button>
+            </Badge>
           </NavLink>
         </Toolbar>
       </AppBar>

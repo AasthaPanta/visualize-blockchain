@@ -4,8 +4,9 @@ import BlockchainService from './blockchainService';
 // Creating context object
 export const BlockContext = React.createContext('No blocks');
 
-// Getting blocks from the blockchain service
+// Getting blocks from the blockchain services
 const initialBlocks = new BlockchainService().getBlocks();
+
 
 export const BlockProvider = ({children}) => {
     let [blocks, setBlocks] = useState(initialBlocks)

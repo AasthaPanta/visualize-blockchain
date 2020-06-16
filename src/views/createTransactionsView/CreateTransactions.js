@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
 
 import { colors } from '../../assets/styles/ColorPalette';
 
@@ -31,14 +34,23 @@ const CreateTransactions = () => {
     });
 
     // For checking the state of the pending transactions
-    const [pendingTx, setPendingTx] = useState([])
-    
+    const [pendingTx, setPendingTx] = useState([]);
+    // For opening snackbar on successful transaction creation
+    const [open, setOpen] = useState(false);
     const updateValue = e => {
         settxValues({
           ...txValues,
           [e.target.name]: e.target.value
         });
       };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpen(false);
+    };
 
     const createTransaction = () => {
        console.log('Creating Transaction', txValues);
@@ -52,7 +64,10 @@ const CreateTransactions = () => {
             settxValues({...txValues, toAddress:'', amount:''})
             const pendingtxns = blockchainService.getPendingTransactions();
             console.log('Pending transactions', pendingtxns);
-            if (pendingtxns) setPendingTx(pendingtxns);
+            if (pendingtxns) {
+                setOpen(true);
+                setPendingTx(pendingtxns);
+            }
         } catch (e) {
             alert(e);
             return;
@@ -62,7 +77,6 @@ const CreateTransactions = () => {
 
     const mineTransaction = () => {
         blockchainService.minePendingTransactions();
-        console.log('#############')
         console.log(blockchainService.getBlocks());
         const newblocks = blockchainService.getBlocks();
         getNewBlocks(newblocks);
@@ -132,6 +146,19 @@ const CreateTransactions = () => {
                 <Button variant="contained" style={{backgroundColor: colors.buttonColor, color: colors.lightText}} onClick={createTransaction}>
                     Sign & Create Transaction
                 </Button>
+                <Snackbar
+                    anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                    }}
+                    open={open}
+                    autoHideDuration={6000}
+                    onClose={handleClose}
+                >
+                    <MuiAlert onClose={handleClose} elevation={6} variant="filled" color="info" severity="success">
+                        Transaction successfully signed, created, and added in pending transactions list.
+                    </MuiAlert>
+                </Snackbar>
                 </div>
                 <h1 style={{fontWeight: 400}}>Pending Transactions</h1>
                 {pendingTx.length > 0?
