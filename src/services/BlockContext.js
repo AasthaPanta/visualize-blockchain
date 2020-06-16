@@ -5,18 +5,24 @@ import BlockchainService from './blockchainService';
 export const BlockContext = React.createContext('No blocks');
 
 // Getting blocks from the blockchain services
-const initialBlocks = new BlockchainService().getBlocks();
-
+const initial = new BlockchainService();
+const Blocks = initial.getBlocks();
+const PendingTxns = initial.getPendingTransactions();
 
 export const BlockProvider = ({children}) => {
-    let [blocks, setBlocks] = useState(initialBlocks)
-
+    let [blocks, setBlocks] = useState(Blocks)
+    let [pendingTxns, setPendingTxns] = useState(PendingTxns)
+    
     const getNewBlocks = (newblocks) => {
         setBlocks(newblocks);
     }
 
+    const getPendingTxns = (txns) => {
+        setPendingTxns(txns)
+    }
+
     return (
-        <BlockContext.Provider value={{blocks, getNewBlocks}}>
+        <BlockContext.Provider value={{blocks, getNewBlocks, pendingTxns, getPendingTxns}}>
             {children}
         </BlockContext.Provider>
     );

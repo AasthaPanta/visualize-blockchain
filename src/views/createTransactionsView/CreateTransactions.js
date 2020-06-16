@@ -25,16 +25,15 @@ const blockchainService = new BlockchainService();
 const walletKey = blockchainService.walletKeys[0];
 
 const CreateTransactions = () => {
-    const {getNewBlocks} = useContext(BlockContext);
+    const {getNewBlocks, pendingTxns, getPendingTxns} = useContext(BlockContext);
+    
     // For handling text-inputs
     const [txValues, settxValues] = useState({
         fromAddress: walletKey.publicKey,
         toAddress: '',
         amount: ''
     });
-
-    // For checking the state of the pending transactions
-    const [pendingTx, setPendingTx] = useState([]);
+    
     // For opening snackbar on successful transaction creation
     const [open, setOpen] = useState(false);
     const updateValue = e => {
@@ -66,7 +65,8 @@ const CreateTransactions = () => {
             console.log('Pending transactions', pendingtxns);
             if (pendingtxns) {
                 setOpen(true);
-                setPendingTx(pendingtxns);
+                //setPendingTx(pendingtxns);
+                getPendingTxns(pendingtxns);
             }
         } catch (e) {
             alert(e);
@@ -80,7 +80,7 @@ const CreateTransactions = () => {
         console.log(blockchainService.getBlocks());
         const newblocks = blockchainService.getBlocks();
         getNewBlocks(newblocks);
-        
+        getPendingTxns(blockchainService.getPendingTransactions());
     }
     
     return(
@@ -161,10 +161,10 @@ const CreateTransactions = () => {
                 </Snackbar>
                 </div>
                 <h1 style={{fontWeight: 400}}>Pending Transactions</h1>
-                {pendingTx.length > 0?
+                {pendingTxns.length > 0?
                     <div>
                         <p>Following are your pending transactions</p>
-                        <TxDetailsTable txndata={pendingTx} />
+                        <TxDetailsTable txndata={pendingTxns} />
                         <Link to="/" style={{textDecoration: 'none'}}>
                             <Button variant="contained" style={{backgroundColor: colors.buttonColor, color: colors.lightText, marginBottom: 20}} onClick={mineTransaction}>
                                 Start Mining
@@ -182,13 +182,3 @@ const CreateTransactions = () => {
 export default CreateTransactions;
 
 
-/**
- * const createTransaction = () => {
-        newTx.fromAddress = walletKey.publicKey;
-        // Sign transaction
-        newTx.signTransaction(walletKey.keyObj);
-        // Add the transaction, which will be added in pending transaction
-        blockchainService.addTransaction(newTx);
-        
-    }
- */

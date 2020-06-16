@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {NavLink} from 'react-router-dom';
 
 // Importing from Material-UI
@@ -13,7 +13,7 @@ import Badge from '@material-ui/core/Badge';
 
 // Importing styles
 import { colors } from '../../assets/styles/ColorPalette';
-
+import {BlockContext} from '../../services/BlockContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,7 +37,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
   const classes = useStyles();
-
+  const { pendingTxns } =useContext(BlockContext);
+  const numberofpendingtxns = pendingTxns.length;
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.header}>
@@ -61,7 +62,7 @@ const Header = () => {
                 vertical: 'top',
                 horizontal: 'right',
               }}
-              badgeContent={2} 
+              badgeContent={numberofpendingtxns} 
               color="secondary"
             >
               <Button size="small" variant="outlined" color="inherit" style={{marginLeft: 5}}>Create Transactions</Button>
