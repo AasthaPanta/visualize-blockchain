@@ -19,6 +19,12 @@ const styles = {
     tableHead:{
         backgroundColor: colors.primary,
         
+    },
+    addressBody:{
+        width:'100%', 
+        whiteSpace: 'nowrap', 
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
     }
 }
 
@@ -40,8 +46,8 @@ const TxDetailsTable = ({txndata}) => {
                     {txndata.map((item, idx) => (
                         <TableRow key={idx+ item.timestamp} style={idx % 2 === 0 ? {background: colors.background}:{background: colors.primarylight}}>
                             <TableCell>{idx}</TableCell>
-                            <TableCell style={{wordBreak:'break-word'}} align="center">{item.fromAddress === null ? 'System':item.fromAddress}</TableCell>
-                            <TableCell align="center">{item.toAddress}</TableCell>
+                            <TableCell style={{maxWidth: '100px'}}  align="center" ><div style={styles.addressBody}>{item.fromAddress === null ? 'System':item.fromAddress}</div></TableCell>
+                            <TableCell style={{maxWidth: '100px'}} align="center"><div style={styles.addressBody}>{item.toAddress}</div></TableCell>
                             <TableCell align="center">{item.amount}</TableCell>
                             <TableCell align="center">{item.timestamp}</TableCell>
                             <TableCell align="center">Yes</TableCell>

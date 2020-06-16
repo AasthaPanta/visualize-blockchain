@@ -7,7 +7,7 @@ export const colors = {
     darkText: '#808080',
     error: '#CC3333',
     success: '#41924B',
-    buttonColor: '#99CC99',
+    buttonColor: '#62b362',
     highlight: '#FE8402',
     background: '#F6FAF9'
 }
