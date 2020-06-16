@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect} from 'react';
+import React, { Fragment, useState, useContext} from 'react';
 import Header from '../../components/Header';
 import TxDetailsTable from '../../components/TxDetailsTable';
 
@@ -9,8 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 
-import BlockchainService from '../../services/blockchainService';
-
+import {BlockContext} from '../../services/BlockContext';
 import { colors } from '../../assets/styles/ColorPalette';
 
 const styles = {
@@ -61,13 +60,9 @@ const styles = {
 
 }
 
-// Getting blocks from the blockchain service
-const blocks = new BlockchainService().getBlocks();
-console.log('Blocks', blocks);
-
-
 const Home = () => {
-     
+    const {blocks} = useContext(BlockContext)
+    console.log('Obtaing blocks from provider', blocks);
     //For selection of block
     const [isblockSelected, setBlockSelection] = useState(0);
     const [txndata, setTxnData] = useState([]);
@@ -78,11 +73,9 @@ const Home = () => {
         setTxnData(block.transactions)
     }
 
-    useEffect(() => {
-        console.log('BLock Updated')
-    }, [isblockSelected])
-
+    
     return(
+        
         <Fragment>
             <Header/>
             <Container>
@@ -139,6 +132,7 @@ const Home = () => {
                 }
             </Container>                 
         </Fragment>
+        
             
         
     );

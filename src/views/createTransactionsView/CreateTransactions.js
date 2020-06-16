@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useState, useContext} from 'react';
 import Header from '../../components/Header';
 import TxDetailsTable from '../../components/TxDetailsTable';
 import { Link } from 'react-router-dom';
@@ -12,6 +12,8 @@ import { colors } from '../../assets/styles/ColorPalette';
 
 import BlockchainService from '../../services/blockchainService';
 import {Transaction} from '../../services/blockchain';
+import {BlockContext} from '../../services/BlockContext';
+
 
 
 // Creating new instance of the blockchain services
@@ -20,7 +22,7 @@ const blockchainService = new BlockchainService();
 const walletKey = blockchainService.walletKeys[0];
 
 const CreateTransactions = () => {
-
+    const {getNewBlocks} = useContext(BlockContext);
     // For handling text-inputs
     const [txValues, settxValues] = useState({
         fromAddress: walletKey.publicKey,
@@ -60,6 +62,11 @@ const CreateTransactions = () => {
 
     const mineTransaction = () => {
         blockchainService.minePendingTransactions();
+        console.log('#############')
+        console.log(blockchainService.getBlocks());
+        const newblocks = blockchainService.getBlocks();
+        getNewBlocks(newblocks);
+        
     }
     
     return(
