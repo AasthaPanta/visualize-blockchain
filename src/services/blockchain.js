@@ -194,6 +194,7 @@ class Blockchain{
      */
     getBalanceOfAddress(address){
         let balance = 0;
+        console.log('Chain', this.chain);
         for (const block of this.chain){
             for(const trans of block.transactions){
                 if(trans.fromAddress === address){
@@ -207,6 +208,26 @@ class Blockchain{
         }
 
         return balance;
+    }
+
+    /**
+     * Returns a list of all transactions that happened
+     * to and from the given wallet address.
+     * @param {string} address 
+     * @returns {Transaction[]}
+     */
+
+    getAllTransactionsForWallet(address){
+        const txs = [];
+        for (const block of this.chain) {
+            for (const tx of block.transactions) {
+              if (tx.fromAddress === address || tx.toAddress === address) {
+                txs.push(tx);
+              }
+            }
+        }
+
+        return txs;
     }
 
     /**

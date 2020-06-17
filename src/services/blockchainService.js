@@ -42,4 +42,8 @@ export default class BlockchainService{
     minePendingTransactions(){
         this.blockchainInstance.minePendingTransactions(this.walletKeys[0].publicKey)
     }
+
+    getBalanceOfAddress(address){
+        return this.blockchainInstance.getBalanceOfAddress(address);
+    }
 }
