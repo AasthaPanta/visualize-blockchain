@@ -11,11 +11,11 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 
 import {colors} from '../../assets/styles/ColorPalette';
+import TxDetailsTable from '../TxDetailsTable';
 
 
-
-const WalletInfo = ({open, handleClose, address}) => {  
-    console.log('Address', address);
+const WalletInfo = ({open, handleClose, walletInfo}) => {  
+    console.log('Wallet Info', walletInfo);
     
     return(
         <Dialog
@@ -24,12 +24,20 @@ const WalletInfo = ({open, handleClose, address}) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Your Wallet Details"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title" style={{color:colors.secondary}}>{"Your Wallet Details"}</DialogTitle>
         <DialogContent>
-          <p>Balance: </p>
+          <div>
+            <p style={{width:'100%', whiteSpace: 'nowrap', overflow: 'hidden',textOverflow: 'ellipsis'}}>Your Wallet Address:<span style={{color:colors.highlight, marginLeft: 5}}>{walletInfo.address}</span></p>
+            <p>Balance: <span style={{color:colors.highlight, marginLeft:5}}>{walletInfo.balance}</span></p>
+          </div>
+          {
+          walletInfo.transactions.length > 0?
+          <TxDetailsTable txndata={walletInfo.transactions} />:
+          <p style={{color: colors.error}}>No transaction details</p>
+          }
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} style={{color: colors.error}} autoFocus>
+          <Button onClick={handleClose} style={{color: colors.error, fontSize: 18, fontWeight: 'bold'}} autoFocus>
             Close
           </Button>
         </DialogActions>

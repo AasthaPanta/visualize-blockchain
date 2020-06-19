@@ -128,7 +128,7 @@ const Home = () => {
                 {isblockSelected === 0 ?
                     <p style={{color: colors.error}}>This block has no transactions</p>
                     :
-                    <TxDetailsTable txndata={txndata} />
+                    <TxDetailsTable txndata={txndata} linked />
                 }
             </Container>                 
         </Fragment>
