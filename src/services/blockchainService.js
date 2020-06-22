@@ -1,4 +1,5 @@
 import {Blockchain} from './blockchain';
+
 const EC = require('elliptic').ec;
 
 export default class BlockchainService{
