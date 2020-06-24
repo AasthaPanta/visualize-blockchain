@@ -17,7 +17,6 @@ import BlockchainService from '../../services/blockchainService';
 
 import {BlockContext} from '../../services/BlockContext';
 
-//const Transaction = require('../../services/blockchain').Transaction;
 import {Transaction} from '../../services/blockchain';
 
 // Creating new instance of the blockchain services
@@ -153,7 +152,7 @@ const CreateTransactions = () => {
                     horizontal: 'center',
                     }}
                     open={open}
-                    autoHideDuration={6000}
+                    autoHideDuration={2000}
                     onClose={handleClose}
                 >
                     <MuiAlert onClose={handleClose} elevation={6} variant="filled" color="info" severity="success">

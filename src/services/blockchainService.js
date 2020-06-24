@@ -1,4 +1,3 @@
-//const Blockchain = require('./blockchain').Blockchain
 import { Blockchain } from './blockchain';
 const EC = require('elliptic').ec;
 
