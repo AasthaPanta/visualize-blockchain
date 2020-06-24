@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/visualize-blockchain/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/visualize-blockchain/static/js/main.61ac7c42.chunk.js",
+    "main.js.map": "/visualize-blockchain/static/js/main.61ac7c42.chunk.js.map",
+    "runtime-main.js": "/visualize-blockchain/static/js/runtime-main.4d14c632.js",
+    "runtime-main.js.map": "/visualize-blockchain/static/js/runtime-main.4d14c632.js.map",
+    "static/js/2.a79b401f.chunk.js": "/visualize-blockchain/static/js/2.a79b401f.chunk.js",
+    "static/js/2.a79b401f.chunk.js.map": "/visualize-blockchain/static/js/2.a79b401f.chunk.js.map",
+    "index.html": "/visualize-blockchain/index.html",
+    "precache-manifest.b18346d3870c078e3b25abe2ad8562e0.js": "/visualize-blockchain/precache-manifest.b18346d3870c078e3b25abe2ad8562e0.js",
+    "service-worker.js": "/visualize-blockchain/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/visualize-blockchain/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.a79b401f.chunk.js.LICENSE.txt": "/visualize-blockchain/static/js/2.a79b401f.chunk.js.LICENSE.txt",
+    "static/media/logoXL.png": "/visualize-blockchain/static/media/logoXL.5ebf598e.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4d14c632.js",
+    "static/js/2.a79b401f.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.61ac7c42.chunk.js"
+  ]
+}
