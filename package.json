@@ -2,7 +2,7 @@
   "name": "visualize-blockchain",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://AasthaPanta.github.io/visualize-blockchain",
+  "homepage": "https://aasthapanta.github.io/visualize-blockchain/",
   "dependencies": {
     "@material-ui/core": "^4.10.1",
     "@material-ui/icons": "^4.9.1",
