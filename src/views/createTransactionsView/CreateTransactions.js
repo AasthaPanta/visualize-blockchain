@@ -14,10 +14,10 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { colors } from '../../assets/styles/ColorPalette';
 
 import BlockchainService from '../../services/blockchainService';
-import {Transaction} from '../../services/blockchain';
+
 import {BlockContext} from '../../services/BlockContext';
 
-
+const Transaction = require('../../services/blockchain').Transaction;
 
 // Creating new instance of the blockchain services
 const blockchainService = new BlockchainService();
