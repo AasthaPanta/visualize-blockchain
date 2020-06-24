@@ -1,4 +1,5 @@
-const Blockchain = require('./blockchain').Blockchain
+//const Blockchain = require('./blockchain').Blockchain
+import { Blockchain } from './blockchain';
 const EC = require('elliptic').ec;
 
 export default class BlockchainService{

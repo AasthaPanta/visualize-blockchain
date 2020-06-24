@@ -4,7 +4,7 @@ const EC = require('elliptic').ec;
 // Instance of elliptic
 const ec = new EC('secp256k1');
 
-class Transaction{
+export class Transaction{
     /**
      * 
      * @param {string} fromAddress 
@@ -119,7 +119,7 @@ class Block{
     }
 }
 
-class Blockchain{
+export class Blockchain{
     constructor(){
         this.chain = [this.createGenesisBlock()];
         this.difficulty = 2;
@@ -262,5 +262,6 @@ class Blockchain{
     }
 }
 
-module.exports.Blockchain = Blockchain;
-module.exports.Transaction = Transaction;
+//module.exports.Blockchain = Blockchain;
+//module.exports.Transaction = Transaction;
+

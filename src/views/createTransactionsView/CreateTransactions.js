@@ -17,7 +17,8 @@ import BlockchainService from '../../services/blockchainService';
 
 import {BlockContext} from '../../services/BlockContext';
 
-const Transaction = require('../../services/blockchain').Transaction;
+//const Transaction = require('../../services/blockchain').Transaction;
+import {Transaction} from '../../services/blockchain';
 
 // Creating new instance of the blockchain services
 const blockchainService = new BlockchainService();
