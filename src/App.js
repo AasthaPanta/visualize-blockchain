@@ -1,7 +1,6 @@
-import React from 'react';
-import MainRouter from './router';
-import { BrowserRouter} from 'react-router-dom';
-
+import React from "react";
+import MainRouter from "./router";
+import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
   return (
@@ -9,6 +8,6 @@ const App = () => {
       <MainRouter />
     </BrowserRouter>
   );
-}
+};
 
 export default App;
